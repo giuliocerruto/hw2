@@ -33,13 +33,18 @@ class Caltech(VisionDataset):
         '''
 
         self.__data = list()
+        self.labels = dict()
 
+        i = 0
         with open(root + '/' + split + '.txt', 'r') as f:
             line = f.readline()
+            label = re.split('/', line)[0]
+
             if line.find('BACKGROUND_Google') == -1:
+                if label not in self.labels.keys():
+                    self.labels[label] = i
+                    i += 1
                 self.__data.append(line)
-
-
 
     def __getitem__(self, index):
         '''
@@ -60,7 +65,8 @@ class Caltech(VisionDataset):
         if self.transform is not None:
             image = self.transform(image)
 
-        return image, label
+        ret = (image, self.labels[label])
+        return ret
 
     def __len__(self):
         '''
