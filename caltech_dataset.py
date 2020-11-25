@@ -37,7 +37,7 @@ class Caltech(VisionDataset):
 
         i = 0
         with open(root + '/' + split + '.txt', 'r') as f:
-            line = f.readline()
+            line = f.readline()[:-1]
             label = re.split('/', line)[0]
 
             if line.find('BACKGROUND_Google') == -1:
