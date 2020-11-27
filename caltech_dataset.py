@@ -49,7 +49,6 @@ class Caltech(VisionDataset):
                 if label not in self.labels.keys():
                     self.labels[label] = i
                     i += 1
-                print(line)
                 self.__data.append(line)
 
     def __getitem__(self, index):
