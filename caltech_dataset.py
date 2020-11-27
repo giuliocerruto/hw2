@@ -62,6 +62,7 @@ class Caltech(VisionDataset):
         # label can be int
         image = pil_loader(self.__root + '/101_ObjectCategories/' + self.__data[index])
         label = re.split('/', self.__data[index])[0]
+        
 
         # Applies preprocessing when accessing the image
         if self.transform is not None:
