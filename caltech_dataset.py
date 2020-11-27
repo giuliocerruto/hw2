@@ -45,6 +45,7 @@ class Caltech(VisionDataset):
                 if label not in self.labels.keys():
                     self.labels[label] = i
                     i += 1
+                print(line)
                 self.__data.append(line)
 
     def __getitem__(self, index):
@@ -59,7 +60,7 @@ class Caltech(VisionDataset):
         # Provide a way to access image and label via index
         # Image should be a PIL Image
         # label can be int
-        image = pil_loader(self.__root + '101_ObjectCategories/' + self.__data[index])
+        image = pil_loader(self.__root + '/101_ObjectCategories/' + self.__data[index])
         label = re.split('/', self.__data[index])[0]
 
         # Applies preprocessing when accessing the image
